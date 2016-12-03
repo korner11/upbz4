@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <cstdlib>
+#include <stdlib.h>
 #include <string.h>
 
 #define  BUFF 128
@@ -27,10 +27,27 @@ void func1() {
 		puts("Access granted");
 	}
 }
+int copy(char *dst, char *src, unsigned int len)
+{
+	
+	// negative value is converted to unsigned int random number
+	while (len--)
+		*dst++ = *src++;
+
+	return len;
+}
 
 void func2() {
 
 	printf("\nThis is func2");
+	char str1[5];
+	char str2[5];
+	printf("\nEnter string\n");
+	fgets(str1, BUFF, stdin);
+	int f = -1;//if(f<0) f=0;
+	int smt = copy(str2, str1, f);
+	printf("\n %d big number ", smt);
+
 
 }
 
@@ -56,8 +73,6 @@ int main(int argc, char* argv[]) {
 		}*/
 		char *endptr;
 		long int x = strtol(argv[1], &endptr, 10);
-		printf("%d\n", x);
-		printf("%s\n", argv[2]);
 		switch (x) {
 		case 1: func1(); break;
 		case 2: func2(); break;
